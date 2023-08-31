@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('user_cart', function (Blueprint $table) {
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->decimal('vat', 10, 2)->after('price')->nullable();
             //
-            $table->decimal('tax_price', 10, 2)->after('quantity')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('user_cart', function (Blueprint $table) {
+        Schema::table('order_items', function (Blueprint $table) {
             //
         });
     }

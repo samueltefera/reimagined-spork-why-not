@@ -6,6 +6,7 @@
     <div class="container-fluid">
         <div class="row">
 		<!-- Log on to codeastro.com for more projects -->
+          @can('products.index')
           <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-purple">
@@ -19,6 +20,8 @@
               <a href="{{route('products.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          @endcan
+          @can('orders.index')
           <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-primary">
@@ -32,6 +35,8 @@
               <a href="{{route('orders.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          @endcan
+          @can('orders.index')
           <!-- ./col -->
           <div class="col-lg-4 col-6">
             <!-- small box -->
@@ -46,12 +51,14 @@
               <a href="{{route('orders.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          @endcan
           <!-- ./col -->
           
           
     </div>
 
     <div class="row"><!-- Log on to codeastro.com for more projects -->
+    @can('orders.index')
     <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-teal">
@@ -66,8 +73,9 @@
               <a href="{{route('orders.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+    @endcan
           <!-- ./col -->
-
+          @can('customers.index')
       <div class="col-lg-4 col-6">
         <!-- small box -->
         <div class="small-box bg-red">
@@ -84,18 +92,34 @@
       </div>
       <div class="col-lg-4 col-6">
         <!-- small box -->
-        <div class="small-box bg-red">
+        <div class="small-box bg-dark">
           <div class="inner">
-            <h3>{{$customers_count}}</h3>
+            <h3>{{$total_profit}}</h3>
 
             <p>Total Profit</p>
           </div>
           <div class="icon">
-          <i class="fas fa-users"></i>
+          <i class="fas fa-dollar-sign"></i>
           </div>
           <a href="{{ route('customers.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
+      <div class="col-lg-4 col-6">
+        <!-- small box -->
+      <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{$total_vat}}</h3>
+
+            <p>Total Tax</p>
+          </div>
+          <div class="icon">
+          <i class="fas fa-dollar-sign"></i>
+          </div>
+          <a href="{{ route('customers.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      </div>
+      @endcan
       
       <!-- ./col -->
     </div>

@@ -42,6 +42,7 @@ class CartController extends Controller
             'barcode' => 'required|exists:products,barcode',
         ]);
         $barcode = $request->barcode;
+        
 
         $product = Product::where('barcode', $barcode)->first();
         $cart = $request->user()->cart()->where('barcode', $barcode)->first();

@@ -31,6 +31,12 @@ class HomeController extends Controller
         $customers_count = Customer::count();
         $products_count = Product::count();
         $unreadNotifications = Auth::user()->unreadNotifications;
+        //total purchaseing_price
+        $total_purchaseing_price = $orders->map(function($i) {
+            return $i->items->map(function($i) {
+                return $i->product->purchasing_price * $i->quantity;
+            })->sum();
+        })->sum();
 
 
         return view('home', [
@@ -41,6 +47,7 @@ class HomeController extends Controller
                 }
                 return $i->receivedAmount();
             })->sum(),
+            
             'income_today' => $orders->where('created_at', '>=', date('Y-m-d').' 00:00:00')->map(function($i) {
                 if($i->receivedAmount() > $i->total()) {
                     return $i->total();
@@ -50,6 +57,14 @@ class HomeController extends Controller
             'customers_count' => $customers_count,
             'products_count' => $products_count,
             'unreadNotifications' => $unreadNotifications,
+            'total_profit' => $orders->map(function($i) {
+                return $i->total() - $i->totalVat() - $i->items->map(function($i) {
+                    return $i->product->purchasing_price * $i->quantity;
+                })->sum();
+            })->sum(),
+            'total_vat' => $orders->map(function($i) {
+                return $i->totalVat();
+            })->sum(),
         ]);
     }
 }

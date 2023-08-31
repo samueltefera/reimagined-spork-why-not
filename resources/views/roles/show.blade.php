@@ -1,5 +1,4 @@
-<!-- @extends('layouts.app-master')
-@extends('layouts.admin') -->
+
 @extends('layouts.admin')
 
 @section('title', 'Messages')

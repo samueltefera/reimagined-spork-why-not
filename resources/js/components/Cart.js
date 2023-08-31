@@ -214,7 +214,8 @@ class Cart extends Component {
             showLoaderOnConfirm: true,
             preConfirm: () => {
                 const receivedAmount = this.getTotal(this.state.cart); // Use the calculated amount
-                return axios.post('/admin/orders', { customer_id: this.state.customer_id, amount: receivedAmount })
+                console.log(this.state.totalVat);
+                return axios.post('/admin/orders', { customer_id: this.state.customer_id, amount: receivedAmount, totalVat: this.state.totalVat })
                     .then(res => {
                         this.loadCart();
                         return res.data;

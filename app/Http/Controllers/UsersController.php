@@ -26,7 +26,9 @@ class UsersController extends Controller
      */
     public function index() 
     {
-        $users = User::latest()->paginate(10);
+        //show users based on id ascending order
+        $users = User::orderBy('id', 'asc')->paginate(10);
+        
 
         return view('users.index', compact('users'));
     }
@@ -101,7 +103,7 @@ class UsersController extends Controller
      */
     public function update(User $user, Request $request) 
     {
-        $user->update($request->validated());
+        // $user->update($request->validated());
 
         $user->syncRoles($request->get('role'));
 

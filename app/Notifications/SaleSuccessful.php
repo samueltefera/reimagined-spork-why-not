@@ -38,7 +38,7 @@ class SaleSuccessful extends Notification implements ShouldBroadcast
      */
     public function via($notifiable)
     {
-        return ['broadcast', 'database']; //add database and broadcast to the notification
+        return ['broadcast', 'database',]; //add database and broadcast to the notification
     }
 
     /**

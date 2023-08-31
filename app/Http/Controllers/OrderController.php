@@ -29,10 +29,12 @@ class OrderController extends Controller
     }
 
     public function store(OrderStoreRequest $request)
-    {
+    {        
+
         $order = Order::create([
             'customer_id' => $request->customer_id,
             'user_id' => $request->user()->id,
+            
         ]);
 
         $cart = $request->user()->cart()->get();
@@ -41,6 +43,8 @@ class OrderController extends Controller
                 'price' => $item->price * $item->pivot->quantity,
                 'quantity' => $item->pivot->quantity,
                 'product_id' => $item->id,
+                //chage the value of totalVat to decimal
+                'vat' => $request->totalVat,
             ]);
             $item->quantity = $item->quantity - $item->pivot->quantity;
             $item->save();

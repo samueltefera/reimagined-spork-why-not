@@ -15,6 +15,9 @@
     
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <?php echo $__env->yieldContent('css'); ?>
     <script>
         window.APP = <?php echo json_encode([
@@ -22,6 +25,33 @@
                             'warning_quantity' => config('settings.warning_quantity')
                         ]) ?>
     </script>
+    <link href="<?php echo url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+    
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .float-right {
+        float: right;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="<?php echo url('assets/css/app.css'); ?>" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -69,8 +99,12 @@
         <!-- /.control-sidebar -->
     </div><!-- Log on to codeastro.com for more projects -->
     <!-- ./wrapper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="<?php echo url('assets/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+    
+    <?php $__env->startSection("scripts"); ?>
+    <?php echo $__env->yieldSection(); ?>
 
-    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 

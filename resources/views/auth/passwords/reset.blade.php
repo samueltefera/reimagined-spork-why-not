@@ -4,7 +4,7 @@
 <form method="POST" action="{{ route('password.update') }}">
     <input type="hidden" name="token" value="{{ $token }}">
     @csrf
-    <div class="form-group">
+    <!-- <div class="form-group">
         <div class="input-group">
             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
@@ -51,7 +51,7 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block">Request new password</button>

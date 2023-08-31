@@ -75950,9 +75950,11 @@ var Cart = /*#__PURE__*/function (_Component) {
           var receivedAmount = _this9.getTotal(_this9.state.cart); // Use the calculated amount
 
 
+          console.log(_this9.state.totalVat);
           return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/admin/orders', {
             customer_id: _this9.state.customer_id,
-            amount: receivedAmount
+            amount: receivedAmount,
+            totalVat: _this9.state.totalVat
           }).then(function (res) {
             _this9.loadCart();
 

@@ -40,6 +40,12 @@ class Order extends Model
             return $i->price;
         })->sum();
     }
+    public function totalVat()
+    {
+        return $this->items->map(function ($i){
+            return $i->vat;
+        })->sum();
+    }
 
     public function formattedTotal()
     {

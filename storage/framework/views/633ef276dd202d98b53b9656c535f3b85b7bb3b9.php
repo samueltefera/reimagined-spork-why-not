@@ -27,55 +27,70 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('home')): ?>
                 <li class="nav-item has-treeview">
                     <a href="<?php echo e(route('home')); ?>" class="nav-link <?php echo e(activeSegment('')); ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('products.index')): ?>
                 <li class="nav-item has-treeview">
                     <a href="<?php echo e(route('products.index')); ?>" class="nav-link <?php echo e(activeSegment('products', 2)); ?>">
                         <i class="nav-icon fas fa-boxes"></i>
                         <p>Products</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('customers.index')): ?>
                 <li class="nav-item has-treeview">
                     <a href="<?php echo e(route('customers.index')); ?>" class="nav-link <?php echo e(activeSegment('customers', 2)); ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Customers</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cart.index')): ?>
                 <li class="nav-item has-treeview">
                     <a href="<?php echo e(route('cart.index')); ?>" class="nav-link <?php echo e(activeSegment('cart', 2)); ?>">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>Sale System</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('sales.index')): ?>
                 <li class="nav-item has-treeview">
                     <a href="<?php echo e(route('orders.index')); ?>" class="nav-link <?php echo e(activeSegment('orders', 2)); ?>">
                         <i class="nav-icon fas fa-chart-line"></i>
                         <p>Orders</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('settings.index')): ?>
                 <li class="nav-item has-treeview">
-                    <a href="<?php echo e(route('settings.index')); ?>" class="nav-link <?php echo e(activeSegment('settings',2)); ?>">
+                    <a href="<?php echo e(route('settings.index')); ?>" class="nav-link <?php echo e(activeSegment('settings', 2)); ?>">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>Settings</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('roles.index')): ?>
                 <li class="nav-item has-treeview">
-                    <a href="<?php echo e(route('roles.index')); ?>" class="nav-link <?php echo e(activeSegment('roles')); ?>">
+                    <a href="<?php echo e(route('roles.index')); ?>" class="nav-link <?php echo e(activeSegment('roles', 1)); ?>">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>Role Management</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('messages')): ?>
                 <li class="nav-item">
-                    <a href="<?php echo e(route('messages')); ?>" class="nav-link <?php echo e(activeSegment('messages')); ?>">
+                    <a href="<?php echo e(route('messages')); ?>" class="nav-link <?php echo e(activeSegment('messages', 1)); ?>">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>Messages <span class="badge badge-danger unread-badge"><?php echo e($unreadNotifications->count()); ?></span></p>
                     </a>
                 </li>
+                <?php endif; ?>
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">
