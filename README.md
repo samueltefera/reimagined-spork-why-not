@@ -1,6 +1,5 @@
 Certainly! Here's how you can structure your `README.md` file to include those commands:
 
-```markdown
 # sales and expense
 
 ## Setup Instructions
